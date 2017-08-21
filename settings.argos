@@ -53,12 +53,9 @@
             <controller config="contr" />
         </foot-bot>
 
-<<<<<<< HEAD
-=======
         <box id = "liftable" size="0.1,0.1,0.1" movable="true" mass="2.5" >
           <body position="1,0,0" orientation="0,0,0" />
         </box>
->>>>>>> 291375aaef9e1af0ad7a2a773dbb85da5fd071e2
     </arena>
 
     <!-- ******************* -->

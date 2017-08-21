@@ -11,8 +11,10 @@ function step()
         lock=1
         robot.gripper.lock_positive()
     end
-    if lock==1 then
-        robot.wheels.set_velocity(-5,5)
+    if robot.positioning.position.x <= 0 and lock ==1 then
+        robot.set_velocity(0,0)
+    elseif lock==1 then
+        robot.wheels.set_velocity(-10,-10)
     else
         robot.wheels.set_velocity(10,10)
     end
