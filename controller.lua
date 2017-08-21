@@ -6,12 +6,13 @@ end
 --need to lock turret
 --why to lock turret
 function step()
+    log("orientation = "..robot.positioning.orientation.angle)
     if robot.proximity[1].value==1 then
         lock=1
         robot.gripper.lock_positive()
     end
     if lock==1 then
-        robot.wheels.set_velocity(-5,-5)
+        robot.wheels.set_velocity(-5,5)
     else
         robot.wheels.set_velocity(10,10)
     end
