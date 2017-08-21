@@ -53,16 +53,6 @@
             <controller config="contr" />
         </foot-bot>
 
-        <box id="liftable" size="0.75, 0.1, 0.5" movable="true" mass="2.5">
-            <body position="1,0,0" orientation="0,0,0" />
-            <leds medium="leds" >
-                <led offset=" 0.15, 0.15,0.15" anchor="origin" color="white" />
-                <led offset="-0.15, 0.15,0"    anchor="origin" color="red"   />
-                <led offset=" 0.15, 0.15,0"    anchor="origin" color="blue"  />
-                <led offset=" 0.15,-0.15,0"    anchor="origin" color="green" />
-             </leds>
-        </box>
-
     </arena>
 
     <!-- ******************* -->
