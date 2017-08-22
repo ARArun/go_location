@@ -19,6 +19,7 @@
             <actuators>
                 <differential_steering implementation="default" />
                 <leds implementation="default" medium="leds" />
+                <footbot_turret implementation="default" />
                 <footbot_gripper implementation="default" />
             </actuators>
             <sensors>
