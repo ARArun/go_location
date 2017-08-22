@@ -74,4 +74,9 @@ end
 --function pull
 --going back to original position
 function pull ()
-    if math.abs(robot.positioning
+    if math.abs(robot.positioning.position.x) <= 0.5 then
+        robot.wheels.set_velocity(0,0)
+    else
+        robot.wheels.set_velocity(10,10)
+    end
+end
