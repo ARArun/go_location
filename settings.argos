@@ -19,6 +19,7 @@
             <actuators>
                 <differential_steering implementation="default" />
                 <leds implementation="default" medium="leds" />
+                <footbot_turret implementation="default" />
                 <footbot_gripper implementation="default" />
             </actuators>
             <sensors>
@@ -54,7 +55,7 @@
         </foot-bot>
 
         <box id = "liftable" size="0.1,0.1,0.1" movable="true" mass="2.5" >
-          <body position="1,0,0" orientation="0,0,0" />
+          <body position="-1,0,0" orientation="0,0,0" />
         </box>
     </arena>
 

@@ -34,12 +34,14 @@ end
 --roam
 -- going to capture
 function roam()
-    if robot.proximity[1].value > 0.5 then
-        robot.wheels.set_velocity(2,2)
-        state = contact
-    else
-        robot.wheels.set_velocity(10,10)
+    robot.wheels.set_velocity(-10,-10)
+    for i = 1,24 do
+        if robot.proximity[i].value == 1 then
+            ang = robot.proximity[i].angle
+            state = lock
+        end
     end
+    return ang
 end
 
 --contact
@@ -65,7 +67,7 @@ end
 -- what if another robot comes near and then this state has arrived
 function turn_turret(ang)
     robot.wheels.set_velocity(0,0)
-    robot.set_rotation(ang)
+    robot.turret.set_rotation(ang)
     robot.gripper.lock_positive()
     state = pullback
 end
@@ -74,7 +76,7 @@ end
 --function pull
 --going back to original position
 function pull ()
-    if math.abs(robot.positioning.position.x) <= 0.5 then
+    if math.abs(robot.positioning.position.x) <= 0.05 then
         robot.wheels.set_velocity(0,0)
     else
         robot.wheels.set_velocity(10,10)
