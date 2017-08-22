@@ -1,5 +1,5 @@
-#To study about grab
-##footbot gripper actuator is used
+# To study about grab
+## footbot gripper actuator is used
 
 In side learning about
 
