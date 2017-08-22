@@ -1,31 +1,40 @@
-lock = 0
+free = "free"
+contact = "contact"
+lock = "locking"
+pullback = "pullback"
 function init()
-
+    state = free
 end
 
 --need to lock turret
 --why to lock turret
 function step()
-    log("orientation = "..robot.positioning.orientation.angle)
-    if robot.proximity[12].value==1 then
-        lock=1
-        robot.gripper.lock_positive()
-    end
-    if robot.positioning.position.x >= 0 and lock ==1 then
-        robot.set_velocity(0,0)
-    elseif lock==1 then
-        robot.wheels.set_velocity(10,10)
-    else
-        robot.wheels.set_velocity(-10,-10)
+    if state == "free" then
+        roam()
+    elseif state == "contact" then
+        stop()
+    elseif state == "locking" then
+        turn_turret()
+    elseif state == "pullback" then
+        return()
     end
 end
 
 
 function reset()
-
+    state = free
 end
 
 
 function destroy()
 
 end
+
+--roam
+-- going to capture
+function roam()
+    if robot.proximity[1].value > 0.5 then
+        robot.wheels.set_velocity(2,2)
+        state = contact
+    else
+        robot.wheels.set_velocity(10,10)
