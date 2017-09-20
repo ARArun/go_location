@@ -2,6 +2,7 @@ free = "free"
 contact = "contact"
 lock = "locking"
 pullback = "pullback"
+count_time = 0
 function init()
     state = free
     robot.turret.set_position_control_mode()
@@ -38,7 +39,7 @@ function roam()
     for i = 1,24 do
         if robot.proximity[i].value == 1 then
             ang = robot.proximity[i].angle
-            state = lock
+            state = contact
         end
     end
     return ang
@@ -66,9 +67,14 @@ end
 -- we pullback
 -- what if another robot comes near and then this state has arrived
 function turn_turret(ang)
+    count_time = count_time + 1
     robot.wheels.set_velocity(0,0)
     robot.turret.set_rotation(ang)
     robot.gripper.lock_positive()
+    if count_time == 50 then
+        state = pullback
+        count_time = 0
+    end
 end
 
 
@@ -78,6 +84,6 @@ function pull ()
     if math.abs(robot.positioning.position.x) <= 0.05 then
         robot.wheels.set_velocity(0,0)
     else
-        robot.wheels.set_velocity(10,10)
+        robot.wheels.set_velocity(-10,-10)
     end
 end
