@@ -2,6 +2,7 @@ free = "free"
 contact = "contact"
 lock = "locking"
 pullback = "pullback"
+prev_state = "dummy"
 count_time = 0
 function init()
     state = free
@@ -11,6 +12,10 @@ end
 --need to lock turret
 --why to lock turret
 function step()
+    if prev_state ~= state then
+        log(state)
+    end
+    prev_state = state
     if state == "free" then
         roam()
     elseif state == "contact" then
